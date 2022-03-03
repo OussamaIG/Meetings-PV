@@ -1,7 +1,19 @@
+from dataclasses import field
 from rest_framework import serializers
-from base.models import Item
+from base.models import PV, Tache, Membre
 
-class ItemSerializer(serializers.ModelSerializer):
+
+class PVSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Item
+        model = PV
+        fields = '__all__'
+
+class MembreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Membre
+        fields = '__all__'
+
+class TacheSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tache
         fields = '__all__'

@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div>
+    <h1>{{pv.nom_pv}}</h1>
+    <p>{{pv.but_pv}}</p>
+    <p>{{pv.point_abordes_pv}}</p>
+    <p>{{pv.decision_prise_pv}}</p>
+    <p>{{pv.date_pv}}</p>
+    <p>{{pv.h_debut_pv}}</p>
+    <p>{{pv.h_fin_pv}}</p>
+    <h3>Les membres :</h3>
+    {% for membre in membres %}
+    <p>{{membre.nom_membre}}</p> <a href="">DELETE</a>
+    {% endfor %}
+    <h2>Les taches :</h2>
+    {% for tach in taches %}
+    <a href="{% url 'deletetache' tach.id %}">DELETE</a>
+    <p>{{tach.nom_tache}}</p> 
+    <p>{{tach.description_tache}}</p>
+    {% endfor %}
+    <h2>Tache attribuees :</h2>
+    {% for membre in membres %}
+    <h4>{{membre.tache.nom_tache}}</h4>
+    <p>{{membre.nom_membre}}</p>
+    {% endfor %}
+    
+
+</div>
+
+{% endblock content %}

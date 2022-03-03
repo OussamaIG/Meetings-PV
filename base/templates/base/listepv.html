@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div>
+    <h1>LES PVS</h1>
+    {% for pv in pvs %}
+    <div>
+        <a href="{% url 'pvpage' pv.id %}"><p>{{pv.nom_pv}}</p></a>
+        <p>{{pv.date_pv}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

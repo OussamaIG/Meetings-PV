@@ -1,19 +1,46 @@
 from multiprocessing import context
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from base.models import Item
-from .serializers import ItemSerializer
+from base.models import PV, Tache, Membre
+from .serializers import PVSerializer, MembreSerializer, TacheSerializer
 
 @api_view(['GET'])
-def getData(request):
-    items = Item.objects.all()
-    serializer = ItemSerializer(items, many=True)
+def Liste_of_pv(request):
+    pvs = PV.objects.all()
+    serializer = PVSerializer(pvs, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def Liste_of_membres(request):
+    membres = Membre.objects.all()
+    serializer = MembreSerializer(membres, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def Liste_of_taches(request):
+    taches = Tache.objects.all()
+    serializer = TacheSerializer(taches, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def addPV(request):
+    serializer = PVSerializer(data = request.data)
+    if serializer.is_valid():
+        serializer.save()
     return Response(serializer.data)
 
 @api_view(['POST'])
-def addData(request):
-    serializer = ItemSerializer(data= request.data)
+def addMembre(request):
+    serializer = MembreSerializer(data = request.data)
     if serializer.is_valid():
         serializer.save()
-
     return Response(serializer.data)
+
+@api_view(['POST'])
+def addTache(request):
+    serializer = TacheSerializer(data = request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
