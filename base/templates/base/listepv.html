@@ -1,11 +1,17 @@
 {% extends 'main.html' %}
 {% block content %}
 
-
+<a href="{% url 'homepage' %}">HOME</a>
+<div>
+    <form  method="GET" action="{% url 'listepv' %}">
+        <input type="text" name="q" placeholder="Search pv..."/>
+    </form>
+</div>
 <div>
     <h1>LES PVS</h1>
     {% for pv in pvs %}
     <div>
+        <a href="{% url 'deletepv' pv.id %}">DELETE</a>
         <a href="{% url 'pvpage' pv.id %}"><p>{{pv.nom_pv}}</p></a>
         <p>{{pv.date_pv}}</p>
     </div>

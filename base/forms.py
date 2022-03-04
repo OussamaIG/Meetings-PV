@@ -11,9 +11,9 @@ class PVForm(ModelForm):
 class TacheForm(ModelForm):
     class Meta:
         model = Tache
-        fields = '__all__'
+        fields = ['nom_tache', 'description_tache']
 
 class MembreForm(ModelForm):
     class Meta:
         model = Membre
-        fields = '__all__'
+        fields = ['nom_membre', 'prenom_membre']

@@ -1,6 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
 
+
+<a href="{% url 'homepage' %}">HOME</a>
 <div>
     <h1>{{pv.nom_pv}}</h1>
     <p>{{pv.but_pv}}</p>
@@ -9,16 +11,21 @@
     <p>{{pv.date_pv}}</p>
     <p>{{pv.h_debut_pv}}</p>
     <p>{{pv.h_fin_pv}}</p>
+    <hr>
     <h3>Les membres :</h3>
+    <a href="{% url 'addmembertopv' pv.id %}">ADD MEMBER</a>
     {% for membre in membres %}
-    <p>{{membre.nom_membre}}</p> <a href="">DELETE</a>
+    <p>{{membre.nom_membre}}</p> <a href="{% url 'deletemember' membre.id %}">DELETE</a>
     {% endfor %}
+    <hr>
     <h2>Les taches :</h2>
+    <a href="{% url 'addtachetopv' pv.id %}">ADD TACHE</a>
     {% for tach in taches %}
     <a href="{% url 'deletetache' tach.id %}">DELETE</a>
     <p>{{tach.nom_tache}}</p> 
     <p>{{tach.description_tache}}</p>
     {% endfor %}
+    <hr>
     <h2>Tache attribuees :</h2>
     {% for membre in membres %}
     <h4>{{membre.tache.nom_tache}}</h4>
